@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Students - HZ University</title>
+</head>
+<body>
+    <header class="bg-success text-white text-center p-4">
+        <h1>Student List</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container my-4">
+        <h2>Enrolled Students</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Courses</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body"></tbody>
+        </table>
+    </main>
+    <footer class="text-center bg-light p-3">
+        <p>&copy; 2024 HZ University</p>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load student data from JSON
+        fetch('students.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('student-table-body');
+                data.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.courses.join(', ')}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            });
+    </script>
+</body>
+</html>
