@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
 .card {
     transition: transform 0.3s, box-shadow 0.3s;
 }
