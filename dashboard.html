@@ -12,133 +12,51 @@
         <h1>Dashboard</h1>
         <nav>
             <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="profile.html">Profile</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="login.html">Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="enroll-student.html">Enroll Student</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="transcript.html">View Transcript</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="defer-admission.html">Defer Admission</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="cancel-fees.html">Cancel Fees</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="refund-tuition.html">Refund Tuition</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="index.html">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main class="container my-4">
-        <img src="images/students.jpg" alt="Students" class="img-fluid rounded mb-4">
-        <h2>Welcome to the Dashboard</h2>
+        <h2>Welcome, Admin!</h2>
         <div class="row">
             <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
+                <div class="card">
+                    <img src="images/students.jpg" class="card-img-top" alt="Students">
                     <div class="card-body">
-                        <h5 class="card-title">Enroll Student</h5>
-                        <p class="card-text">Enroll new students into courses.</p>
-                        <a href="enroll-student.html" class="btn btn-success">Enroll</a>
+                        <h5 class="card-title">Student Management</h5>
+                        <p class="card-text">Manage student profiles, enrollments, and more.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
+                <div class="card">
+                    <img src="images/courses.jpg" class="card-img-top" alt="Courses">
                     <div class="card-body">
-                        <h5 class="card-title">Edit Student Profile</h5>
-                        <p class="card-text">Modify existing student details.</p>
-                        <a href="edit-profile.html" class="btn btn-warning">Edit Profile</a>
+                        <h5 class="card-title">Course Management</h5>
+                        <p class="card-text">View and manage courses offered in the department.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
+                <div class="card">
+                    <img src="images/transcripts.jpg" class="card-img-top" alt="Transcripts">
                     <div class="card-body">
-                        <h5 class="card-title">View Transcripts</h5>
-                        <p class="card-text">Access student transcripts.</p>
-                        <a href="transcript.html" class="btn btn-info">View Transcripts</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Defer Admission</h5>
-                        <p class="card-text">Postpone student admissions.</p>
-                        <a href="defer-admission.html" class="btn btn-secondary">Defer</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Cancel Fees</h5>
-                        <p class="card-text">Cancel pending fees for students.</p>
-                        <a href="cancel-fees.html" class="btn btn-danger">Cancel Fees</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Refund Tuition Fees</h5>
-                        <p class="card-text">Process refunds for tuition fees.</p>
-                        <a href="refund-tuition.html" class="btn btn-warning">Refund Tuition</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Manage Courses</h5>
-                        <p class="card-text">Add or remove courses from the system.</p>
-                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manageCoursesModal">Manage Courses</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Student Statistics</h5>
-                        <p class="card-text">View statistics about student enrollment.</p>
-                        <a href="#" class="btn btn-info">View Stats</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-4 bg-body rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Notifications</h5>
-                        <p class="card-text">View notifications regarding university updates.</p>
-                        <a href="#" class="btn btn-secondary">View Notifications</a>
+                        <h5 class="card-title">Transcript Management</h5>
+                        <p class="card-text">Generate and view student transcripts.</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <!-- Manage Courses Modal -->
-    <div class="modal fade" id="manageCoursesModal" tabindex="-1" aria-labelledby="manageCoursesModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="manageCoursesModalLabel">Manage Courses</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="manage-courses-form">
-                        <div class="mb-3">
-                            <label for="course-name" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="course-name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="course-code" class="form-label">Course Code</label>
-                            <input type="text" class="form-control" id="course-code" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Course</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer class="text-center bg-light p-3">
         <p>&copy; 2024 HZ University</p>
     </footer>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
