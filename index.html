@@ -3,99 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Admin Portal</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>HZ University Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .student-table th, .student-table td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        .student-table th {
+            background-color: #35424a;
+            color: white;
+        }
+        .student-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button {
+            background-color: #35424a;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
-    <!-- Login Page -->
-    <div id="loginPage" class="login-container">
-        <h2>Admin Login</h2>
-        <form id="loginForm">
-            <label for="username">Username</label>
-            <input type="text" id="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div id="loginError" class="error-message" style="color: red;"></div>
-    </div>
 
-    <!-- Dashboard Page -->
-    <div id="dashboardPage" class="dashboard-container" style="display: none;">
-        <header>
-            <h1>University Admin Dashboard</h1>
-            <button id="logoutBtn">Logout</button>
-        </header>
-        <nav>
-            <button id="viewStudentsBtn">View Students</button>
-            <button id="manageFeesBtn">Manage Fees</button>
-            <button id="documentManagementBtn">Document Management</button>
-            <button id="profileManagementBtn">Profile Management</button>
-            <button id="transitStudentsBtn">Transit Students</button>
-        </nav>
-        <section id="contentArea">
-            <div id="studentTableContainer">
-                <!-- Student data table will be dynamically inserted here -->
-            </div>
-        </section>
+<header>
+    <h1>HZ University Portal</h1>
+    <p>Welcome to the Agricultural Sciences Department</p>
+</header>
 
-        <!-- Student Modal for Adding/Editing -->
-        <div id="studentModal" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModal">&times;</span>
-                <h2 id="modalTitle">Add Student</h2>
-                <form id="studentForm">
-                    <input type="hidden" id="studentId">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" required>
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" required>
-                    <label for="country">Country</label>
-                    <input type="text" id="country" required>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                    <label for="status">Status</label>
-                    <select id="status">
-                        <option value="admitted">Admitted</option>
-                        <option value="pending">Pending</option>
-                    </select>
-                    <button type="submit" id="saveStudentBtn">Save</button>
-                </form>
-            </div>
-        </div>
-    </div>
+<main>
+    <h2>Admitted Students</h2>
+    <table class="student-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Program</th>
+            </tr>
+        </thead>
+        <tbody id="admitted-students">
+            <!-- Admitted students will be populated here -->
+        </tbody>
+    </table>
 
-    <script src="script.js"></script>
-    <script>
-        // Handle login functionality
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
+    <h2>Pending Admissions</h2>
+    <table class="student-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Program</th>
+            </tr>
+        </thead>
+        <tbody id="pending-students">
+            <!-- Pending students will be populated here -->
+        </tbody>
+    </table>
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    <button class="button" onclick="loadStudents()">Load Students</button>
+</main>
 
-            // Hardcoded credentials
-            if (username === 'LAL84624' && password === 'LKumar212') {
-                document.getElementById('loginPage').style.display = 'none'; // Hide login page
-                document.getElementById('dashboardPage').style.display = 'block'; // Show dashboard
+<script>
+    function loadStudents() {
+        fetch('students.json')
+            .then(response => response.json())
+            .then(data => {
+                const admittedTable = document.getElementById('admitted-students');
+                const pendingTable = document.getElementById('pending-students');
 
-                // Clear the username and password fields
-                document.getElementById('username').value = '';
-                document.getElementById('password').value = '';
-            } else {
-                document.getElementById('loginError').innerText = 'Invalid username or password'; // Display error
-            }
-        });
+                // Clear existing rows
+                admittedTable.innerHTML = '';
+                pendingTable.innerHTML = '';
 
-        // Handle logout functionality
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            document.getElementById('dashboardPage').style.display = 'none'; // Hide dashboard
-            document.getElementById('loginPage').style.display = 'block'; // Show login page
-            document.getElementById('loginError').innerText = ''; // Clear error message
-            document.getElementById('username').value = ''; // Clear username field
-            document.getElementById('password').value = ''; // Clear password field
-        });
-    </script>
+                data.admitted.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${student.name}</td><td>${student.studentId}</td><td>${student.email}</td><td>${student.program}</td>`;
+                    admittedTable.appendChild(row);
+                });
+
+                data.pending.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${student.name}</td><td>${student.studentId}</td><td>${student.email}</td><td>${student.program}</td>`;
+                    pendingTable.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error loading students:', error));
+    }
+</script>
+
 </body>
 </html>
