@@ -18,7 +18,7 @@
             <input type="password" id="password" required>
             <button type="submit">Login</button>
         </form>
-        <div id="loginError" class="error-message"></div>
+        <div id="loginError" class="error-message" style="color: red;"></div>
     </div>
 
     <!-- Dashboard Page -->
@@ -70,19 +70,27 @@
     <script>
         // Handle login functionality
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent form submission
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             // Hardcoded credentials
             if (username === 'LAL84624' && password === 'LKumar212') {
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboardPage').style.display = 'block';
-                // You can call updateDashboard() here if you implement that function.
+                document.getElementById('loginPage').style.display = 'none'; // Hide login page
+                document.getElementById('dashboardPage').style.display = 'block'; // Show dashboard
             } else {
-                document.getElementById('loginError').innerText = 'Invalid username or password';
+                document.getElementById('loginError').innerText = 'Invalid username or password'; // Display error
             }
+        });
+
+        // Handle logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            document.getElementById('dashboardPage').style.display = 'none'; // Hide dashboard
+            document.getElementById('loginPage').style.display = 'block'; // Show login page
+            document.getElementById('loginError').innerText = ''; // Clear error message
+            document.getElementById('username').value = ''; // Clear username field
+            document.getElementById('password').value = ''; // Clear password field
         });
     </script>
 </body>
