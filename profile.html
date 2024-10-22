@@ -12,5 +12,36 @@
         <h1>Profile</h1>
         <nav>
             <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="dashboard.html">Dashboard
+                <li class="nav-item"><a class="nav-link text-white" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container my-4">
+        <h2>Your Profile</h2>
+        <div id="profile-info" class="mb-4"></div>
+        <a href="edit-profile.html" class="btn btn-warning">Edit Profile</a>
+    </main>
+    <footer class="text-center bg-light p-3">
+        <p>&copy; 2024 HZ University</p>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Load student profile data
+        function loadProfile() {
+            fetch('students.json')
+                .then(response => response.json())
+                .then(data => {
+                    const student = data[0]; // Example to show the first student
+                    document.getElementById('profile-info').innerHTML = `
+                        <h3>${student.name}</h3>
+                        <p>Email: ${student.email}</p>
+                        <p>Courses Enrolled: ${student.courses.join(', ')}</p>
+                    `;
+                });
+        }
+        loadProfile();
+    </script>
+</body>
+</html>
