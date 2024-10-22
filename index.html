@@ -79,6 +79,10 @@
             if (username === 'LAL84624' && password === 'LKumar212') {
                 document.getElementById('loginPage').style.display = 'none'; // Hide login page
                 document.getElementById('dashboardPage').style.display = 'block'; // Show dashboard
+
+                // Clear the username and password fields
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
             } else {
                 document.getElementById('loginError').innerText = 'Invalid username or password'; // Display error
             }
