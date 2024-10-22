@@ -67,5 +67,23 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Handle login functionality
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Hardcoded credentials
+            if (username === 'LAL84624' && password === 'LKumar212') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboardPage').style.display = 'block';
+                // You can call updateDashboard() here if you implement that function.
+            } else {
+                document.getElementById('loginError').innerText = 'Invalid username or password';
+            }
+        });
+    </script>
 </body>
 </html>
